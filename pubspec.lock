@@ -168,6 +168,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
+  themexpert:
+    dependency: "direct main"
+    description:
+      name: themexpert
+      sha256: "5c996c2f31b843e5ea8bb5ba630293ce42e21f51aa15059465ae5f533b7bf5fb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   vector_math:
     dependency: transitive
     description:
@@ -178,3 +186,4 @@ packages:
     version: "2.1.4"
 sdks:
   dart: ">=2.19.6 <3.0.0"
+  flutter: ">=3.7.7"

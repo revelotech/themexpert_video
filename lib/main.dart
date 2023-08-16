@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:themexpert_video/tokens/app_colors.dart';
-import 'package:themexpert_video/tokens/app_typography.dart';
+import 'package:themexpert/themexpert.dart';
+import 'package:themexpert_video/theme/app_theme.dart';
+import 'package:themexpert_video/theme/switch_component_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,139 +19,135 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: AppColors.white,
-        appBar: AppBar(
-          backgroundColor: AppColors.white,
-          title: const Text(
-            'ThemeXpert Example',
-            style: TextStyle(color: AppColors.blue),
-          ),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(30),
-            child: SizedBox(
-              height: 30,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  'POWERED BY REVELO',
-                  style: AppTypography.baseText.copyWith(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: AppColors.blue,
+    return ThemeXConfiguration(
+      darkMode: false,
+      builder: (context) => ThemeXWrapper(
+        theme: AppTheme(context),
+        builder: (context) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: Scaffold(
+            backgroundColor: themeOf(context).surfaceColor,
+            appBar: AppBar(
+              backgroundColor: themeOf(context).surfaceColor,
+              title: Text(
+                'ThemeXpert Example',
+                style: TextStyle(color: themeOf(context).highlightTextColor),
+              ),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(30),
+                child: SizedBox(
+                  height: 30,
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Text(
+                      'POWERED BY REVELO',
+                      style: themeOf(context).txBodySmaller,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
-        body: SafeArea(
-          child: CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 24,
-                        right: 24,
-                        top: 12,
-                        bottom: 12,
-                      ),
-                      child: RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: 'This is the app ',
-                              style: AppTypography.baseText.copyWith(
-                                fontSize: 38,
-                                fontWeight: FontWeight.w600,
-                                color: AppColors.blue,
-                              ),
-                            ),
-                            TextSpan(
-                              text: 'main theme',
-                              style: AppTypography.baseText.copyWith(
-                                fontSize: 38,
-                                fontWeight: FontWeight.w900,
-                                color: AppColors.blue,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: 24,
-                        right: 24,
-                        top: 12,
-                        bottom: 12,
-                      ),
-                      child: Text(
-                        'All the tokens and cool things that your '
-                        'app needs are configured here. Also, I need '
-                        'to write a few more words so the description '
-                        'feels a little less lorem-ipsum-ish',
-                        style: AppTypography.baseText.copyWith(
-                          color: AppColors.blue,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              SliverFillRemaining(
-                hasScrollBody: false,
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Container(
-                    margin: const EdgeInsets.all(12),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(200),
-                      color: AppColors.whiteLight,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: AppColors.darkBlue01,
-                          blurRadius: 1,
-                          offset: Offset(0, 1),
-                        )
-                      ],
-                    ),
-                    clipBehavior: Clip.hardEdge,
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
+            body: SafeArea(
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Switch(
-                          activeColor: AppColors.blue,
-                          value: isDarkMode,
-                          onChanged: (value) {
-                            setState(() {
-                              isDarkMode = value;
-                            });
-                          },
+                        Container(
+                          padding: const EdgeInsets.only(
+                            left: 24,
+                            right: 24,
+                            top: 12,
+                            bottom: 12,
+                          ),
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'This is the app ',
+                                  style: themeOf(context).txTitle,
+                                ),
+                                TextSpan(
+                                  text: 'main theme',
+                                  style: themeOf(context).txTitle.copyWith(
+                                        fontWeight: FontWeight.w900,
+                                      ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Text(
-                          'Toggle Dark Mode',
-                          style: AppTypography.baseText.copyWith(
-                            color: AppColors.blue,
+                        Container(
+                          padding: const EdgeInsets.only(
+                            left: 24,
+                            right: 24,
+                            top: 12,
+                            bottom: 12,
+                          ),
+                          child: Text(
+                            'All the tokens and cool things that your '
+                            'app needs are configured here. Also, I need '
+                            'to write a few more words so the description '
+                            'feels a little less lorem-ipsum-ish',
+                            style: themeOf(context).txBody,
                           ),
                         ),
                       ],
                     ),
                   ),
-                ),
+                  SliverFillRemaining(
+                    hasScrollBody: false,
+                    child: ThemeXWrapper(
+                      theme: SwitchComponentTheme(context),
+                      builder: (context) => Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          margin: const EdgeInsets.all(12),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 20,
+                          ),
+                          decoration: BoxDecoration(
+                            borderRadius:
+                                ThemeX.ofType<SwitchComponentTheme>(context)
+                                    .borderRadius,
+                            color: ThemeX.ofType<SwitchComponentTheme>(context)
+                                .surfaceColor,
+                            boxShadow:
+                                ThemeX.ofType<SwitchComponentTheme>(context)
+                                    .shadow,
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Switch(
+                                activeColor:
+                                    ThemeX.ofType<SwitchComponentTheme>(context)
+                                        .highlightTextColor,
+                                value: isDarkMode,
+                                onChanged: (value) {
+                                  setState(() {
+                                    isDarkMode = value;
+                                  });
+                                },
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              Text(
+                                'Toggle Dark Mode',
+                                style: themeOf(context).txBody,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
