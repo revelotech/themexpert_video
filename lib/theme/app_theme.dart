@@ -8,9 +8,10 @@ class AppTheme extends BaseTheme {
     super.context,
   );
 
-  Color get surfaceColor => AppColors.white;
+  Color get surfaceColor => darkMode ? AppColors.darkBlue01 : AppColors.white;
 
-  Color get highlightTextColor => AppColors.blue;
+  Color get highlightTextColor =>
+      darkMode ? AppColors.whiteLight : AppColors.blue;
 
   TextStyle get txBody => AppTypography.baseText.copyWith(
         color: highlightTextColor,

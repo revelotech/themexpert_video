@@ -8,7 +8,8 @@ class SwitchComponentTheme extends AppTheme {
   );
 
   @override
-  Color get surfaceColor => AppColors.whiteLight;
+  Color get surfaceColor =>
+      darkMode ? AppColors.darkBlue02 : AppColors.whiteLight;
 
   List<BoxShadow>? get shadow => darkMode
       ? null

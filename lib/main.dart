@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ThemeXConfiguration(
-      darkMode: false,
+      darkMode: isDarkMode,
       builder: (context) => ThemeXWrapper(
         theme: AppTheme(context),
         builder: (context) => MaterialApp(
@@ -111,8 +111,7 @@ class _MyAppState extends State<MyApp> {
                             borderRadius:
                                 ThemeX.ofType<SwitchComponentTheme>(context)
                                     .borderRadius,
-                            color: ThemeX.ofType<SwitchComponentTheme>(context)
-                                .surfaceColor,
+                            color: themeOf(context).surfaceColor,
                             boxShadow:
                                 ThemeX.ofType<SwitchComponentTheme>(context)
                                     .shadow,
@@ -123,8 +122,7 @@ class _MyAppState extends State<MyApp> {
                             children: [
                               Switch(
                                 activeColor:
-                                    ThemeX.ofType<SwitchComponentTheme>(context)
-                                        .highlightTextColor,
+                                    themeOf(context).highlightTextColor,
                                 value: isDarkMode,
                                 onChanged: (value) {
                                   setState(() {
