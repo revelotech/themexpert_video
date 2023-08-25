@@ -1,5 +1,5 @@
 # ThemeXpert Video Repository
-Welcome to the official repository for the [ThemeXpert tutorial video]()!
+Welcome to the official repository for the [ThemeXpert tutorial video](https://www.youtube.com/watch?v=Py2XlWyfR78)!
 This repository is designed to provide you with a comprehensive reference for the code demonstrated in our video about how to implement a themes with ThemeXpert.
 
 ## About the Tutorial
